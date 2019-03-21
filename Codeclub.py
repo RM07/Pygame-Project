@@ -89,6 +89,30 @@ def main():
                 flashButtonAnimation(button)
                 pygame.time.wait(FLASHDELAY)
             waitingForInput = True
+        else:
+            if clickedButton and clickedButton == pattern[currentStep]:
+                flashButtonAnimation(clickedButton)
+                currentStep += 1
+                lastClickTime = time.time()
+
+                if currentStep == len(pattern):
+                    changeBackgroundAnimation()
+                    score += 1
+                    waitingForInput = False
+                    currentStep = 0
+                elif (clickedButton and clickedButton != pattern[currentStep]) or (currentStep != 0 and time.time()- TIMEOUT > lastClickTime):
+                    gameOverAnimation()
+                    pattern = []
+                    currentStep = 0
+                    waitingForInput = False
+                    score = 0
+                    pygame.time.wait(1000)
+                    changeBackgroundAnimation ()
+
+
+        pygame.display.update()
+        FPSCLOCK.tick(FPS)
+        
 
 
 
