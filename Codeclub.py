@@ -79,7 +79,7 @@ def main():
                     clickedButton = BLUE
                 elif event.key == k_a:
                     clickedButton = RED
-                elif event.key = k_s:
+                elif event.key == k_s:
                     clickedButton = GREEN
         if not waitingForInput:
             pygame.display.update()
